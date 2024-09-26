@@ -1,0 +1,45 @@
+#
+# Shorewall -- /etc/shorewall/rules
+#
+# For information on the settings in this file, type "man shorewall-rules"
+#
+# The manpage is also online at
+# https://shorewall.org/manpages/shorewall-rules.html
+#
+##############################################################################################################################################################
+#ACTION		SOURCE		DEST		PROTO	DPORT	SPORT	ORIGDEST	RATE	USER	MARK	CONNLIMIT	TIME	HEADERS	SWITCH	HELPER
+
+?SECTION ALL
+?SECTION ESTABLISHED
+?SECTION RELATED
+?SECTION INVALID
+?SECTION UNTRACKED
+?SECTION NEW
+ACCEPT          all     all         tcp
+ACCEPT          all     all         tcp     15671
+ACCEPT          all     all         udp     15671
+ACCEPT          all     all         tcp     15672:15872
+ACCEPT          all     all         udp     15672:15872
+ACCEPT          all     all         tcp     5672
+ACCEPT          all     all         tcp     13306   # MYSQL
+ACCEPT          all     all         tcp     15432   # postgresql-9.6
+ACCEPT          all     all         tcp     25432   # postgresql-10
+ACCEPT          all     all         tcp     35432   # postgresql-11
+ACCEPT          all     all         tcp     45432   # postgresql-12
+ACCEPT          all     all         tcp     80
+ACCEPT          all     all         tcp     443
+ACCEPT          all     all         tcp     465
+ACCEPT          all     all         udp     465
+ACCEPT          all     all         tcp     587
+ACCEPT          all     all         udp     587
+ACCEPT          all     all         tcp     9101
+ACCEPT          all     all         tcp     9102
+ACCEPT          all     all         tcp     9103
+ACCEPT          all     all         tcp     11883 # mosquitto
+ACCEPT          all     all         tcp     28080 # apache mon.mhlee.net
+SMB(ACCEPT)     fw		loc
+SMB(ACCEPT)		loc		fw
+SMB(ACCEPT)     loc     loc
+#HELPER			net		-			tcp		15671 { helper=ftp }
+DROP            net     fw          icmp    8
+

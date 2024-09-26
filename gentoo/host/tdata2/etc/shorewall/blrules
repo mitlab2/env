@@ -1,0 +1,51 @@
+#
+# Shorewall -- /etc/shorewall/blrules
+#
+# For information about entries in this file, type "man shorewall-blrules"
+#
+# Please see https://shorewall.org/blacklisting_support.htm for additional
+# information.
+#
+##############################################################################################################################################################
+#ACTION		SOURCE		DEST		PROTO	DPORT	SPORT	ORIGDEST	RATE	USER	MARK	CONNLIMIT	TIME	HEADERS	SWITCH	HELPER
+
+WHITELIST   net:219.250.50.156          all
+WHITELIST   net:180.70.20.32           	all
+DROP        net:194.28.112.181         	all
+DROP		net:37.187.109.27			all	
+DROP		net:135.148.89.14			all
+DROP        net:222.186.15.76/32       	all
+DROP 		net:118.24.111.62/32		all
+DROP		net:47.88.220.88/32			all
+DROP		net:47.244.5.221/32			all
+DROP 		net:132.232.210.210			all
+DROP		net:139.199.20.220			all
+DROP		net:163.172.42.123			all
+DROP		net:150.109.67.14			all
+DROP		net:119.29.146.110			all
+DROP		net:8.218.128.243			all
+DROP		net:162.142.125.24			all
+DROP 		net:82.118.23.123			all
+DROP		net:146.88.240.4			all
+DROP		net:129.150.37.135			all
+DROP		net:27.111.82.72			all
+DROP		net:97.74.83.140			all
+DROP		net:106.75.164.178			all
+DROP		net:94.102.61.34			all
+DROP		net:146.88.240.4			all
+DROP		net:23.94.123.217			all
+DROP		net:146.88.240.4			all
+DROP		net:192.241.196.145			all
+DROP		net:94.102.61.37			all
+DROP		net:192.241.219.174			all
+DROP		net:146.88.240.4  			all
+DROP		net:162.142.125.234			all
+DROP		net:159.223.47.173			all
+DROP		net:192.241.203.205/24		all
+DROP		net:43.135.174.170/24		all
+DROP		net:170.106.198.166			all
+DROP		net:79.153.43.166			all
+DROP		net:157.230.92.238			all
+DROP		net:101.36.112.113 			all
+DROP		net:43.135.174.170			all
+DROP		net:101.36.112.113			all
