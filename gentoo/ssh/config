@@ -1,0 +1,7 @@
+# --- Sourcetree Generated ---
+Host github.com
+	HostName github.com
+	User mitlab2
+	PreferredAuthentications publickey
+	IdentityFile /home/mhlee/.ssh/mitlab2-GitHub
+
