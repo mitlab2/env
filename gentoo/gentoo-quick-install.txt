@@ -1,0 +1,107 @@
+
+# gdisk /dev/sda
+Create GPT partition table:
+Command: o ↵
+This option deletes all partitions and creates a new protective MBR.
+Proceed? (Y/N): y ↵
+
+Create Partition 1 (/boot):
+Command: n ↵
+Partition Number: 1 ↵
+First sector: ↵
+Last sector: +128M ↵
+Hex Code: ↵
+
+Create Partition 2 (UEFI ESP):
+Command: n ↵
+Partition Number: 2 ↵
+First sector: ↵
+Last sector: +128M ↵
+Hex Code: EF00 ↵
+
+Create Partition 3 (swap):
+Command: n ↵
+Partition Number: 3 ↵
+First sector: ↵
+Last sector: +1024MB ↵
+Hex Code: 8200 ↵
+
+Create Partition 4 (/):
+Command: n ↵
+Partition Number: 4 ↵
+First sector: ↵
+Last sector: ↵ (for rest of disk)
+Hex Code: ↵
+
+Write Partition Table To Disk:
+Command: w ↵
+Do you want to proceed? (Y/N): Y ↵
+
+# mkfs.ext4 /dev/vda1
+# mkfs.ext4 /dev/vda4
+# mkswap /dev/vda3
+# swapon /dev/vda3
+# mkfs.vfat -F 32 /dev/vda2
+
+
+
+
+# tar xpf stage3-arm64-desktop-openrc-20240901T234855Z.tar.xz
+# mount --types proc /proc /mnt/gentoo/proc
+# mount --rbind /sys /mnt/gentoo/sys
+# mount --make-rslave /mnt/gentoo/sys
+# mount --rbind /dev /mnt/gentoo/dev
+# mount --make-rslave /mnt/gentoo/dev
+# mount --bind /run /mnt/gentoo/run
+# mount --make-slave /mnt/gentoo/run
+# cp /etc/resolv.conf etc/
+# chroot . /bin/bash
+# source /etc/profile
+# emerge-webrsync
+# emerge -avuDN @world
+# passwd
+# useradd -g users -G wheel,portage,audio,video,usb,cdrom -m username
+# passwd username
+
+File: /etc/fstab
+/dev/vda1		/boot		ext4		noauto,noatime	1 2
+/dev/vda2		/boot/efi	vfat 		noauto,noatime	0 0
+/dev/vda4		/			ext4		noatime			0 1
+/dev/vda3		none		swap		sw				0 0
+/dev/cdrom		/mnt/cdrom	auto		noauto,ro		0 0
+
+File: /etc/env.d/02locale
+LANG="en_US.UTF-8"
+LC_COLLATE="C"
+
+File: /etc/locale.gen
+en_US.UTF-8 UTF-8
+ko_KR.EUC-KR EUC-KR
+ko_KR.UTF-8 UTF-8
+ko_KR EUC-KR
+C.UTF8 UTF-8
+
+File: /etc/conf.d/hostnameE
+
+# ln -sf /usr/share/zoneinfo/Europe/Helsinki /etc/localtime
+
+# emerge -uDNav world
+# emerge -av sys-kernel/gentoo-kernel-bin
+# echo 'GRUB_PLATFORMS="efi-64"' >> /etc/portage/make.conf
+# emerge --ask sys-boot/grub
+
+BIOS
+# grub-install /dev/vda
+UEFI
+# grub-install --target=x86_64-efi,arm64 --efi-directory=/boot/efi
+
+# grub-mkconfig -o /boot/grub/grub.cfg
+
+# emerge --ask net-misc/dhcpcd
+# rc-update add dhcpcd default]
+# emerge --ask sys-apps/iproute2 net-wireless/wpa_supplicant net-wireless/iw net-wireless/wireless-tools
+
+# exit
+# umount -R /mnt/gentoo
+# reboot
+
