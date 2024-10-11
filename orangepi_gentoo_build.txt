@@ -1,0 +1,8 @@
+/etc/portage/make.conf
+QEMU_SOFTMMU_TARGETS="x86_64 aarch64 arm avr i386"
+EMU_USER_TARGETS="x86_64 aarch64 arm avr aarch64"
+
+/etc/portage/package.use/qemu
+app-emulation/qemu aio alsa bzip2 curl fdt filecaps gnutls gtk jpeg ncurses nls opengl oss pam pin-up   stream-blobs png pulseaudio python sdl seccomp slirp udev usb vhost-net vnc xattr accessibility fuse lzo  nfs  ssh vde virgl virtfs vte zstd
+
+emerge -av sys-apps/pv dev-embedded/u-boot-tools sys-fs/mtools dev-embedded/sunxi-tools app-emulation/qemu
