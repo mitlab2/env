@@ -1,0 +1,25 @@
+network:
+  version: 2
+  wifis:
+    NM-bbe71c99-721f-4cf2-be22-31f79c63514c:
+      renderer: NetworkManager
+      match:
+        name: "wlan0"
+      dhcp4: true
+      dhcp6: false
+      access-points:
+        "SK_WiFiGIGAE452_5G":
+          auth:
+            key-management: "psk"
+            password: "ICU9D@9088"
+          networkmanager:
+            uuid: "bbe71c99-721f-4cf2-be22-31f79c63514c"
+            name: "SK_WiFiGIGAE452_5G"
+            passthrough:
+              wifi-security.auth-alg: "open"
+              ipv6.addr-gen-mode: "default"
+              ipv6.ip6-privacy: "-1"
+              proxy._: ""
+      networkmanager:
+        uuid: "bbe71c99-721f-4cf2-be22-31f79c63514c"
+        name: "SK_WiFiGIGAE452_5G"

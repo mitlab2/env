@@ -1,0 +1,25 @@
+network:
+  version: 2
+  wifis:
+    NM-387b5cba-30f0-4b81-b522-f722d08e2ee2:
+      renderer: NetworkManager
+      match:
+        name: "wlan0"
+      dhcp4: true
+      dhcp6: false
+      access-points:
+        "SK_WiFiGIGAE452_2.4G":
+          auth:
+            key-management: "psk"
+            password: "ICU9D@9088"
+          networkmanager:
+            uuid: "387b5cba-30f0-4b81-b522-f722d08e2ee2"
+            name: "SK_WiFiGIGAE452_2.4G"
+            passthrough:
+              wifi-security.auth-alg: "open"
+              ipv6.addr-gen-mode: "default"
+              ipv6.ip6-privacy: "-1"
+              proxy._: ""
+      networkmanager:
+        uuid: "387b5cba-30f0-4b81-b522-f722d08e2ee2"
+        name: "SK_WiFiGIGAE452_2.4G"
