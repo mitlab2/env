@@ -1,0 +1,1 @@
+# emerge -av sys-apps/usb_modeswitch
