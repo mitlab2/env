@@ -1,0 +1,11 @@
+$ su -
+$ mkdir src
+$ cd src
+$ git clone https://github.com/morrownr/rtl8852bu.git
+$ cd src/rtl8852bu
+$ gcc -v
+$ apt install gcc-12
+$ alias gcc="gcc-12"
+$ gcc -v
+$ ./install-driver.sh
+
