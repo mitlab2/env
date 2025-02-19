@@ -1,0 +1,31 @@
+$ cd ST/STM8
+$ git clone https://github.com/vdudouyt/stm8flash.gitt
+$ cd stm8flash
+$ make 
+$ make install
+$ brew install stlink
+$ brew install openocd
+$ brew install stm8flash
+$ brew install binutils
+$ brew install gobjcopy 
+OpenOCD Test
+$ openocd -f interface/stlink.cfg -f target/stm8s.cfg
+
+
+
+$ stm8flash -c stlinkv2 -p stm8s103f3 -u
+
+Determine OPT area
+STLink: v2, JTAG: v37, SWIM: v7, VID: 8304, PID: 4837
+Due to its file extension (or lack thereof), "Workaround" is considered as RAW BINARY format!
+Unlocked device. Option bytes reset to default state.
+Bytes written: 11
+
+$ stm8flash -c stlinkv2 -p stm8s103f3 -r option_bytes.bin -s opt
+
+Determine OPT area
+STLink: v2, JTAG: v37, SWIM: v7, VID: 8304, PID: 4837
+Due to its file extension (or lack thereof), "option_bytes.bin" is considered as RAW BINARY format!
+Reading 64 bytes at 0x4800... OK
+Bytes received: 64
+
