@@ -1,3 +1,4 @@
 vi /etc/apt/sources.list.d/ubuntu.sources
+http://ftp.udx.icscoe.jp/Linux/ubuntu/
 https://repo.jing.rocks/ubuntu-ports/
 https://mirror.kakao.com/ubuntu/

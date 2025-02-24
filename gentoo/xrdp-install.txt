@@ -1,0 +1,25 @@
+# emerge -av app-eselect/eselect-repository
+# eselect repository enable dilfridge
+# emaint sync -r dilfridge
+# eselect repository create local
+
+# cd /var/db/repos/local
+# git init
+# git commit
+
+# emerge -av dev-util/pkgdev
+# /var/db/repos/local/net-misc/xorgxrdp
+# mkdir -p ./local/net-misc
+# cp -a dilfridge/net-misc/xrdp ./local/net-misc/
+# cp -a dilfridge/net-misc/xorgxrdp ./local/net-misc/
+# cd ./local/net-misc
+# mv xorgxrdp-0.2.15.ebuild xorgxrdp-0.10.1.ebuild
+
+# vi /etc/portage/package.accept_keywords/xrdp
+net-misc/xrdp ~amd64
+
+# vi /etc/portage/package.use/xrdp
+net-misc/xrdp fuse -ipv6 -kerberos pam pulseaudio aac jpeg lame opus pixman
+
+# cd /var/db/repos/local/net-misc/xorgxrdp
+# pkgdev manifest
