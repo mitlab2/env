@@ -1,0 +1,13 @@
+$ apt install -y vim git curl wget cscope universal-ctags uuid-runtime rsync
+
+gcc-arm-linux-gnueabihf
+gcc-aarch64-linux-gnu
+crossbuild-essential-arm64
+
+apt install -y build-essential libncurses-dev bc flex bison libssl-dev cpio unzip rsync xz-utils kmod crossbuild-essential-arm64
+
+cd ~/
+git clone --depth=1 --branch rpi-6.6.y https://github.com/raspberrypi/linux.git
+export ARCH=arm64
+export CROSS_COMPILE=aarch64-linux-gnu-
+make bcm2710_defconfig
