@@ -1,0 +1,15 @@
+ubuntu-build image를 ubuntu-build 컨테이너로 생성
+$ docker commit ubuntu-build ubuntu-build
+
+컨테이너를 privileged 모드로 생성
+$ docker run --privileged -it  --name ubuntu-build -p 5389:3389 -p 5672:22 ubuntu-build /bin/bash -c "/usr/sbin/sshd -D"
+
+$ docker stop ubuntu-build
+
+$ docker start ubuntu-build
+
+$ docker exec -it -u ubuntu ubuntu-build /bin/bash
+
+git clone --depth=1 https://github.com/armbian/build.git
+export NO_TMPFS=1
+./compile.sh KERNEL_ONLY=yes BOARD=orangepizero2 BRANCH=current
