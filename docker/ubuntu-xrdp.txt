@@ -1,0 +1,10 @@
+.xsessionrc
+#export GNOME_SHELL_SESSION_MODE=xfce
+#export XDG_SESSION_TYPE=x11
+#export XDG_CURRENT_DESKTOP=xfce
+#export XDG_CONFIG_DIRS=/etc/xdg/xfcd4:/etc/xdg
+
+
+.xsession
+xfce4-session
+
