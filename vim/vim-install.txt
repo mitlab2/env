@@ -1,0 +1,14 @@
+/etc/portage/package.use/vim 
+
+app-editors/vim X acl crypt nls cscope gpm python
+app-editors/gvim acl crypt nls cscope python
+
+$ emerge -av vim cscope ctags taglist
+
+mkdir .vim
+cd .vim
+git clone https://github.com/nanotech/jellybeans.vim.git
+mv jellybeans.vim/colors ./
+
+mkdir plugin
+cp /usr/share/vim/vimfiles/plugin/taglist.vim plugin/
