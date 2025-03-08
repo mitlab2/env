@@ -13,3 +13,21 @@ $ docker exec -it -u ubuntu ubuntu-build /bin/bash
 git clone --depth=1 https://github.com/armbian/build.git
 export NO_TMPFS=1
 ./compile.sh KERNEL_ONLY=yes BOARD=orangepizero2 BRANCH=current
+
+
+컨테이너 실행시 맥의 디렉토리를 컨테이너에 마운트
+docker run --privileged -it -v ~/shared_folder:/mnt/shared ubuntu:24.04 /bin/bash
+
+
+이미 실행 중인 컨테이너에 마운트 추가 (컨테이너 중지 필요)
+docker stop my-container
+docker rm my-container
+docker run --privileged -it -v ~/shared_folder:/mnt/shared --name my-container ubuntu:24.04 /bin/bash
+
+
+
+호스트에서 컨테이너로 파일 복사
+docker cp ~/env/gentoo/bash/.bashrc gentoo-deeplearning:/root/
+
+컨테이너에서 호스트로 복사
+docker cp my-container:/root/test.txt ~/test_from_container.txt
