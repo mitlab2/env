@@ -1,0 +1,6 @@
+https://wiki.gentoo.org/wiki/Vscode
+
+$ less /var/db/repos/gentoo/licenses/Microsoft-vscode
+# echo "app-editors/vscode Microsoft-vscode" >> /etc/portage/package.license
+# emerge --ask app-editors/vscode
+
