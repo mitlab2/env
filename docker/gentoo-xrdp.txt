@@ -2,6 +2,36 @@
 # eselect repository enable dilfridge
 # emaint sync -r dilfridge
 
+새로운 로컬 저장소 만들기
+# mkdir -p /var/db/repos/myoverlay/{metadata,profiles}
+# echo "myoverlay" > /var/db/repos/myoverlay/profiles/repo_name
+# echo "masters = gentoo" > /var/db/repos/myoverlay/metadata/layout.conf
+# nano /etc/portage/repos.conf/myoverlay.conf
+[myoverlay]
+location = /var/db/repos/myoverlay
+auto-sync = no
+priority = 50
+
+저장소 확인
+# emerge --info --verbose | grep myoverlay
+또는
+# eselect repository list
+
+XRDP 생성
+# cd /var/db/repos/myoverlay/
+# cp -a /var/db/repos/dilfridge/net-misc ./
+# cd net-misc/xrdp
+# mv xrdp-0.10.1.ebuild xrdp-0.10.2.ebuild
+# ebuild xrdp-0.10.2.ebuild manifest
+
+# vi /etc/portage/package.use/xrdp
+net-misc/xrdp aac -ipv6 jpeg pam fuse 
+
+# cd ../xorgxrdp
+# mv xorgxrdp-0.2.15.ebuild xorgxrdp-0.10.2.ebuild
+# ebuild xorgxrdp-0.10.2.ebuild manifest
+# pkgdev manifest
+
 # vi /etc/portage/package.accept_keywords/xrdp
 net-misc/xorgxrdp ~amd64
 net-misc/xrdp ~amd64
@@ -35,8 +65,20 @@ lrwxrwxrwx 1 root root 71 Mar  5 11:05 /etc/portage/make.profile -> ../../var/db
 # emerge-websync 로 해결
 
 openrc 시작 에러 문제
-
+OpenRC 강제 초기화	openrc sysinit 실행
 # openrc sysinit 로 임시 해결
+
+# mkdir /run/openrc
+# touch /run/openrc/softlevel
+# mkdir /run/openrc/started
+# mkdir /run/openrc/starting
+# mkdir /run/openrc/exclusive
+
+
+
+Docker 컨테이너에서 실행 중	
+docker run --privileged --init -it gentoo /bin/bash
+
 
 도커 파일 복사
 컨테이너에서 호스트로 복사
