@@ -1,0 +1,5 @@
+app-i18n/ibus-hangul python_single_target_python3_11
+>=app-i18n/ibus-1.5.30-r1 python_targets_python3_11
+>=dev-python/pygobject-3.50.0 python_targets_python3_11
+>=dev-python/pycairo-1.27.0 python_targets_python3_11
+

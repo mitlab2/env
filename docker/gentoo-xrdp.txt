@@ -1,3 +1,7 @@
+> docker pull gentoo/stage3:t64-systemd-20250324
+
+
+
 # emerge -av app-eselect/eselect-repository
 # eselect repository enable dilfridge
 # emaint sync -r dilfridge
@@ -54,6 +58,12 @@ docker commit focused_feistel gentoo-xrdp
 
 컨테이너를 privileged 모드로 생성
 $ docker run --privileged --init --cgroupns=host -it  --name gentoo-xrdp -p 5389:3389 -p 5672:22 gentoo-xrdp /bin/bash
+docker run --init --privileged --cgroupns=host --tmpfs /run --tmpfs /tmp -v /sys/fs/cgroup:/sys/fs/cgroup:rw -p 5389:3389 -p 5672:22 -it stupefied_lumiere /sbin/openrc-init 
+
+systemd
+docker run -d --name gentoo-systemd --privileged --cgroupns=host -v /sys/fs/cgroup:/sys/fs/cgroup:rw -p 5672:22 -p 5389:3389 gentoo-systemd /sbin/init
+docker exec -it gentoo-systemd /bin/bash
+
 컨테이너 재 실행시 
 $ docker run --privileged --init -it  -p 5389:3389 -p 5672:22 gentoo-xrdp /bin/bash
 

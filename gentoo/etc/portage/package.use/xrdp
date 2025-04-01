@@ -1,0 +1,2 @@
+net-misc/xrdp aac -ipv6 jpeg pam fuse lame opus pixman pulseaudio
+>=media-plugins/alsa-plugins-1.2.12 pulseaudio
